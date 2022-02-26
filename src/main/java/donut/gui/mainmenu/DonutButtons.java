@@ -43,20 +43,20 @@ public class DonutButtons extends GuiButton {
 
 
             this.mouseDragged(mc, mouseX, mouseY);
-            int fade = 0;
+            int fade = 100;
             j = 14737632;
 
             if (!this.enabled) {
                 j = 10526880;
-            } else if (this.hovered) {
-                if(fade < 250){
+            } else if (!this.hovered) {
+                if(fade < 255){
                     fade += 5;
                 }else if(fade > 200) {
                     fade -= 5;
                 }
             }
 
-            this.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, new Color(255, 255, fade).getRGB());
+            this.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, new Color(51, 153, 255, fade).getRGB());
 
         }
     }
