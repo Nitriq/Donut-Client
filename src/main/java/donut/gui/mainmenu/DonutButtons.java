@@ -51,7 +51,7 @@ public class DonutButtons extends GuiButton {
             } else if (this.hovered) {
                 if(fade < 250){
                     fade += 5;
-                }else if(fade > 200){
+                }else if(fade > 200) {
                     fade -= 5;
                 }
             }
