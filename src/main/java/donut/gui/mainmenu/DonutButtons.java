@@ -3,6 +3,7 @@ package donut.gui.mainmenu;
 import java.awt.*;
 
 import donut.util.UnicodeFontRenderer;
+import donut.util.anim.Animation;
 import donut.util.rendering.DrawUtil;
 import donut.util.rendering.FontUtils;
 import net.minecraft.client.Minecraft;
@@ -43,20 +44,20 @@ public class DonutButtons extends GuiButton {
 
 
             this.mouseDragged(mc, mouseX, mouseY);
-            int fade = 100;
-            j = 14737632;
+            int fade;
+            j = new Color(224, 224, 224, 255).getRGB();
 
             if (!this.enabled) {
-                j = 10526880;
-            } else if (!this.hovered) {
-                if(fade < 255){
-                    fade += 5;
-                }else if(fade > 200) {
-                    fade -= 5;
-                }
+                j = new Color(160, 160, 160, 255).getRGB();
+            } else if (this.hovered) {
+
+                fade = (int) new Animation(3, 50, 200).getValue();
+
+                j = new Color(85, 170, 255, fade).getRGB();
+
             }
 
-            this.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, new Color(51, 153, 255, fade).getRGB());
+            this.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 8) / 2, j);
 
         }
     }
