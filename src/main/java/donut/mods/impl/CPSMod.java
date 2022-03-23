@@ -10,6 +10,10 @@ import java.util.List;
 
 public class CPSMod extends ModDraggable {
 
+    public CPSMod(){
+        super("CPSMod");
+    }
+
     private List<Long> clicks = new ArrayList<Long>();
     private boolean wasPressed;
     private long lastPressed;

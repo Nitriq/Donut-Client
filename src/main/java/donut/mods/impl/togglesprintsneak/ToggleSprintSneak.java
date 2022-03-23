@@ -6,6 +6,10 @@ import donut.util.rendering.DrawUtil;
 
 public class ToggleSprintSneak extends ModDraggable {
 
+    public ToggleSprintSneak(){
+        super("ToggleSprintSneak");
+    }
+
     //settings
     public boolean flyBoost = true;
     public boolean sneakEnabled = false;

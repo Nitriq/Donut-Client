@@ -22,8 +22,8 @@ public class TooltipProviderShaderOptions extends TooltipProviderOptions
         }
         else
         {
-            GuiButtonShaderOption guibuttonshaderoption = (GuiButtonShaderOption)btn;
-            ShaderOption shaderoption = guibuttonshaderoption.getShaderOption();
+            GuiButtonShaderOption GuiButtonshaderoption = (GuiButtonShaderOption)btn;
+            ShaderOption shaderoption = GuiButtonshaderoption.getShaderOption();
             String[] astring = this.makeTooltipLines(shaderoption, width);
             return astring;
         }

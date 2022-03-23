@@ -6,6 +6,10 @@ import donut.util.rendering.DrawUtil;
 
 public class FPSMod extends ModDraggable {
 
+    public FPSMod(){
+        super("FPS");
+    }
+
     @Override
     public int getWidth() {
         return font.getStringWidth("FPS: 9999");

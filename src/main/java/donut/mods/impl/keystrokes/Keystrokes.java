@@ -9,6 +9,10 @@ import org.lwjgl.opengl.GL11;
 
 public class Keystrokes extends ModDraggable {
 
+    public Keystrokes(){
+        super("Keystrokes");
+    }
+
     public boolean round = true;
     public boolean box = false;
 

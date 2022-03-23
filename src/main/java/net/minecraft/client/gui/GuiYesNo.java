@@ -88,9 +88,9 @@ public class GuiYesNo extends GuiScreen
     {
         this.ticksUntilEnable = p_146350_1_;
 
-        for (GuiButton guibutton : this.buttonList)
+        for (GuiButton GuiButton : this.buttonList)
         {
-            guibutton.enabled = false;
+            GuiButton.enabled = false;
         }
     }
 
@@ -103,9 +103,9 @@ public class GuiYesNo extends GuiScreen
 
         if (--this.ticksUntilEnable == 0)
         {
-            for (GuiButton guibutton : this.buttonList)
+            for (GuiButton GuiButton : this.buttonList)
             {
-                guibutton.enabled = true;
+                GuiButton.enabled = true;
             }
         }
     }

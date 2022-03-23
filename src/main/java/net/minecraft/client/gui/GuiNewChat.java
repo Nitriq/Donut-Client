@@ -3,8 +3,6 @@ package net.minecraft.client.gui;
 import com.google.common.collect.Lists;
 import java.util.Iterator;
 import java.util.List;
-
-import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -125,28 +123,9 @@ public class GuiNewChat extends Gui
         this.sentMessages.clear();
     }
 
-    private String lastMessage = "";
-    private int sameMessageAmount, line;
-
     public void printChatMessage(IChatComponent chatComponent)
     {
-        if (chatComponent.getUnformattedText().equals(lastMessage)) {
-            Minecraft.getMinecraft().ingameGUI.getChatGUI().deleteChatLine(line);
-            sameMessageAmount++;
-            lastMessage = chatComponent.getUnformattedText();
-            chatComponent.appendText(ChatFormatting.WHITE + " (" + sameMessageAmount + "x)");
-        } else {
-            sameMessageAmount = 1;
-            lastMessage = chatComponent.getUnformattedText();
-        }
-
-        line++;
-
-        if (line > 256) {
-            line = 0;
-        }
-
-        this.printChatMessageWithOptionalDeletion(chatComponent, line);
+        this.printChatMessageWithOptionalDeletion(chatComponent, 0);
     }
 
     /**
@@ -215,7 +194,7 @@ public class GuiNewChat extends Gui
 
     /**
      * Adds this string to the list of sent messages, for recall using the up/down arrow keys
-     *  
+     *
      * @param message The message to add in the sendMessage List
      */
     public void addToSentMessages(String message)
@@ -237,7 +216,7 @@ public class GuiNewChat extends Gui
 
     /**
      * Scrolls the chat by the given number of lines.
-     *  
+     *
      * @param amount The amount to scroll
      */
     public void scroll(int amount)
@@ -259,7 +238,7 @@ public class GuiNewChat extends Gui
 
     /**
      * Gets the chat component under the mouse
-     *  
+     *
      * @param mouseX The x position of the mouse
      * @param mouseY The y position of the mouse
      */
@@ -330,7 +309,7 @@ public class GuiNewChat extends Gui
 
     /**
      * finds and deletes a Chat line by ID
-     *  
+     *
      * @param id The ChatLine's id to delete
      */
     public void deleteChatLine(int id)

@@ -94,7 +94,7 @@ public class DonutMovementInput extends MovementInput {
                 && !player.isPotionActive(Potion.blindness)) player.setSprinting(true);
 
         if (ModInstances.getToggle().flyBoost && (player.capabilities.isCreativeMode || mc.playerController.isSpectatorMode()) && player.capabilities.isFlying
-                && (mc.getRenderViewEntity() == player) && sprint) {
+                && (mc.getRenderViewEntity() == player)) {
 
             if (originalFlySpeed < 0.0F || this.player.capabilities.getFlySpeed() != boostedFlySpeed)
                 originalFlySpeed = this.player.capabilities.getFlySpeed();

@@ -1,6 +1,7 @@
 package donut.gui.hud;
 
-import donut.Donut;
+import donut.gui.util.DonutButtons;
+import donut.gui.modmenu.ModMenu;
 import donut.util.rendering.DrawUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -29,6 +30,15 @@ public class HUDConfigScreen extends GuiScreen {
 
     private int prevx, prevy;
 
+    int fade;
+    int bkfade;
+
+    @Override
+    public void initGui(){
+        this.donutButtonsArrayList.add(new DonutButtons("Mods", this.width/2 - 50, this.height/2, 100, 25, "Mods"));
+    }
+
+
     HUDConfigScreen(HUDManager api){
 
         Collection<IRenderer> registeredRenderers = api.getRegisteredRenderers();
@@ -52,12 +62,10 @@ public class HUDConfigScreen extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
 
-        super.drawDefaultBackground();
-
         final float zBackup = this.zLevel;
         this.zLevel = 200;
 
-        drawHollowRect(0, 0, this.width - 1, this.height - 1, 0xFFFF0000);
+        drawHollowRect(0, 0, this.width - 1, this.height - 1, new Color(51, 200, 150).getRGB());
 
         for (IRenderer renderer : renderers.keySet()) {
             ScreenPosition pos = renderers.get(renderer);
@@ -70,11 +78,28 @@ public class HUDConfigScreen extends GuiScreen {
             int absoluteX = pos.getAbsoluteX();
             int absoluteY = pos.getAbsoluteY();
 
-            this.hovered = mouseX >= absoluteX && mouseX <= absoluteX + renderer.getWidth() + 2 && mouseY >= absoluteY && mouseY <= absoluteY + renderer.getHeight() + 2;
+            this.hovered = mouseX >= absoluteX - 2 && mouseX <= absoluteX - 2  + renderer.getWidth() + 2 && mouseY >= absoluteY - 2 && mouseY <= absoluteY - 2 + renderer.getHeight() + 2;
+
+
+            if(this.hovered){
+                if(this.fade != 250 && this.bkfade != 150){
+                    this.fade += 10;
+                    this.bkfade += 10;
+                }
+            }else{
+                this.fade = 30;
+                this.bkfade = 30;
+            }
+
+
+
+            Color a = new Color(51 ,200, 255, this.fade);
+            Color b = new Color(0,0,0, this.bkfade);
+
+            DrawUtil.drawRect(absoluteX - 2, absoluteY - 2, pos.getAbsoluteX() + renderer.getWidth(), pos.getAbsoluteY() + renderer.getHeight(), b.getRGB());
+            DrawUtil.drawHollowRect(absoluteX - 2, absoluteY - 2, renderer.getWidth() + 2, renderer.getHeight() + 2, 1, a.getRGB());
 
             if (this.hovered) {
-
-                drawHollowRect(pos.getAbsoluteX() - 2, pos.getAbsoluteY() - 2, renderer.getWidth() + 2, renderer.getHeight() + 2, Donut.getInstance().getThemeColor());
 
                 if (dragged) {
                     pos.setAbsolute(pos.getAbsoluteX() + mouseX - this.prevx, pos.getAbsoluteY() + mouseY - this.prevy);
@@ -83,11 +108,15 @@ public class HUDConfigScreen extends GuiScreen {
 
                     this.prevx = mouseX;
                     this.prevy = mouseY;
+
                 }
 
                 //Ending of smooth dragging
             }
+
         }
+
+
 
         this.smX = mouseX;
         this.smY = mouseY;
@@ -210,6 +239,13 @@ public class HUDConfigScreen extends GuiScreen {
             }
 
             return false;
+        }
+    }
+    @Override
+    protected void actionPerformed(DonutButtons buttons) throws IOException {
+        switch (buttons.function) {
+            case "Mods":
+                this.mc.displayGuiScreen(new ModMenu());
         }
     }
 }

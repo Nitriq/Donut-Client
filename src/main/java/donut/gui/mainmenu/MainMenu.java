@@ -1,23 +1,20 @@
 package donut.gui.mainmenu;
 
+import donut.gui.util.DonutButtons;
 import net.minecraft.client.gui.*;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.ResourceLocation;
-import org.lwjgl.input.Mouse;
 
-import java.awt.Color;
 import java.io.IOException;
 
 public class MainMenu extends GuiScreen {
 
     @Override
     public void initGui() {
-        this.buttonList.add(new DonutButtons(1, this.width / 2 - 75, this.height / 2 - 16, 150, 20, "Singleplayer")); //Singleplayer
-        this.buttonList.add(new DonutButtons(2, this.width / 2 - 75, this.height / 2 + 10, 150, 20, "Multiplayer")); //Multiplayer
-        this.buttonList.add(new DonutButtons(3, this.width / 2 - 75, this.height / 2 + 36, 150, 20, "Options")); //Settings
-        this.buttonList.add(new DonutButtons(4, this.width - 23, 6, 18, 20, EnumChatFormatting.BOLD + ""));//Exit
-
-        super.initGui();
+        this.donutButtonsArrayList.add(new DonutButtons("Singleplayer", this.width / 2 - 75, this.height / 2 - 16, 150, 20, "Singleplayer")); //Singleplayer
+        this.donutButtonsArrayList.add(new DonutButtons("Multiplayer", this.width / 2 - 75, this.height / 2 + 10, 150, 20, "Multiplayer")); //Multiplayer
+        this.donutButtonsArrayList.add(new DonutButtons("Options", this.width / 2 - 75, this.height / 2 + 36, 150, 20, "Options")); //Settings
+        this.donutButtonsArrayList.add(new DonutButtons("close", this.width - 23, 6, 18, 18, EnumChatFormatting.BOLD + "" ));//Exit
     }
 
     @Override
@@ -29,25 +26,25 @@ public class MainMenu extends GuiScreen {
         this.drawString(this.fontRendererObj, s1, this.width - this.fontRendererObj.getStringWidth(s1) - 2, this.height - 10, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);
         mc.getTextureManager().bindTexture(new ResourceLocation("donut/exit.png"));
-        Gui.drawModalRectWithCustomSizedTexture(width - 21, 6, 0, 0, 18, 19, 16, 17);
+        Gui.drawModalRectWithCustomSizedTexture(width - 21, 6, 0, 0, 18, 18, 16, 17);
     }
 
     @Override
-    protected void actionPerformed(final GuiButton button) throws IOException {
-        switch (button.id) {
-            case 1: {
+    protected void actionPerformed(final DonutButtons button) throws IOException {
+        switch (button.function) {
+            case "Singleplayer": {
                 this.mc.displayGuiScreen(new GuiSelectWorld(this));
                 break;
             }
-            case 2: {
+            case "Multiplayer": {
                 this.mc.displayGuiScreen(new GuiMultiplayer(this));
                 break;
             }
-            case 3: {
+            case "Options": {
                 this.mc.displayGuiScreen(new GuiOptions(this, this.mc.gameSettings));
                 break;
             }
-            case 4: {
+            case "close": {
                 this.mc.shutdown();
                 break;
             }

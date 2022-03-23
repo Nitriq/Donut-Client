@@ -8,7 +8,7 @@ java.lang.IllegalArgumentException: Color parameter outside of expected range: A
 	at java.awt.Color.testColorValueRange(Color.java:310)
 	at java.awt.Color.<init>(Color.java:395)
 	at java.awt.Color.<init>(Color.java:490)
-	at donut.gui.mainmenu.DonutButtons.drawButton(DonutButtons.java:56)
+	at donut.gui.mainmenu.GuiButton.drawButton(GuiButton.java:56)
 	at net.minecraft.client.gui.GuiScreen.drawScreen(GuiScreen.java:91)
 	at donut.gui.mainmenu.MainMenu.drawScreen(MainMenu.java:30)
 	at net.minecraft.client.renderer.EntityRenderer.updateCameraAndRender(EntityRenderer.java:1419)
@@ -26,7 +26,7 @@ Stacktrace:
 	at java.awt.Color.testColorValueRange(Color.java:310)
 	at java.awt.Color.<init>(Color.java:395)
 	at java.awt.Color.<init>(Color.java:490)
-	at donut.gui.mainmenu.DonutButtons.drawButton(DonutButtons.java:56)
+	at donut.gui.mainmenu.GuiButton.drawButton(GuiButton.java:56)
 	at net.minecraft.client.gui.GuiScreen.drawScreen(GuiScreen.java:91)
 	at donut.gui.mainmenu.MainMenu.drawScreen(MainMenu.java:30)
 
@@ -63,7 +63,7 @@ VBOs are available because OpenGL 1.5 is supported.
 	Using VBOs: Yes
 	Is Modded: Very likely; Jar signature invalidated
 	Type: Client (map_client.txt)
-	Resource Packs: §1 SOUND PACK MASHUP BY SWRZ §3.zip, !     §aBon§2sai §8[§f16x§8] §2for §aswrz.zip
+	Resource Packs: ï¿½1 SOUND PACK MASHUP BY SWRZ ï¿½3.zip, !     ï¿½aBonï¿½2sai ï¿½8[ï¿½f16xï¿½8] ï¿½2for ï¿½aswrz.zip
 	Current Language: English (US)
 	Profiler Position: N/A (disabled)
 	CPU: 4x Intel(R) Core(TM) i5-5300U CPU @ 2.30GHz

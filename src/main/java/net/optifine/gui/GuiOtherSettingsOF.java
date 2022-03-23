@@ -54,23 +54,23 @@ public class GuiOtherSettingsOF extends GuiScreen implements GuiYesNoCallback
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
-    protected void actionPerformed(GuiButton guibutton)
+    protected void actionPerformed(GuiButton GuiButton)
     {
-        if (guibutton.enabled)
+        if (GuiButton.enabled)
         {
-            if (guibutton.id < 200 && guibutton instanceof GuiOptionButton)
+            if (GuiButton.id < 200 && GuiButton instanceof GuiOptionButton)
             {
-                this.settings.setOptionValue(((GuiOptionButton)guibutton).returnEnumOptions(), 1);
-                guibutton.displayString = this.settings.getKeyBinding(GameSettings.Options.getEnumOptions(guibutton.id));
+                this.settings.setOptionValue(((GuiOptionButton)GuiButton).returnEnumOptions(), 1);
+                GuiButton.displayString = this.settings.getKeyBinding(GameSettings.Options.getEnumOptions(GuiButton.id));
             }
 
-            if (guibutton.id == 200)
+            if (GuiButton.id == 200)
             {
                 this.mc.gameSettings.saveOptions();
                 this.mc.displayGuiScreen(this.prevScreen);
             }
 
-            if (guibutton.id == 210)
+            if (GuiButton.id == 210)
             {
                 this.mc.gameSettings.saveOptions();
                 GuiYesNo guiyesno = new GuiYesNo(this, I18n.format("of.message.other.reset", new Object[0]), "", 9999);

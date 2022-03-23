@@ -11,6 +11,10 @@ import org.lwjgl.opengl.GL11;
 
 public class ArmorHUD extends ModDraggable {
 
+    public ArmorHUD(){
+        super("ArmorHUD");
+    }
+
     Minecraft mc = Minecraft.getMinecraft();
 
     @Override

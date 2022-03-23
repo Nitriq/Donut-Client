@@ -86,11 +86,11 @@ public class GuiShaders extends GuiScreenOF
     {
         boolean flag = Config.isShaders();
 
-        for (GuiButton guibutton : this.buttonList)
+        for (GuiButton GuiButton : this.buttonList)
         {
-            if (guibutton.id != 201 && guibutton.id != 202 && guibutton.id != 210 && guibutton.id != EnumShaderOption.ANTIALIASING.ordinal())
+            if (GuiButton.id != 201 && GuiButton.id != 202 && GuiButton.id != 210 && GuiButton.id != EnumShaderOption.ANTIALIASING.ordinal())
             {
-                guibutton.enabled = flag;
+                GuiButton.enabled = flag;
             }
         }
     }
@@ -214,9 +214,9 @@ public class GuiShaders extends GuiScreenOF
             }
             else
             {
-                GuiButtonEnumShaderOption guibuttonenumshaderoption = (GuiButtonEnumShaderOption)button;
+                GuiButtonEnumShaderOption GuiButtonenumshaderoption = (GuiButtonEnumShaderOption)button;
 
-                switch (guibuttonenumshaderoption.getEnumShaderOption())
+                switch (GuiButtonenumshaderoption.getEnumShaderOption())
                 {
                     case ANTIALIASING:
                         Shaders.nextAntialiasingLevel(!rightClick);
@@ -327,7 +327,7 @@ public class GuiShaders extends GuiScreenOF
                         ShadersTex.updateTextureMinMagFilter();
                 }
 
-                guibuttonenumshaderoption.updateButtonText();
+                GuiButtonenumshaderoption.updateButtonText();
             }
         }
     }

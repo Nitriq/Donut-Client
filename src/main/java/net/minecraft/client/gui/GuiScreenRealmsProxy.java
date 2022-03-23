@@ -170,9 +170,9 @@ public class GuiScreenRealmsProxy extends GuiScreen
     {
         List<RealmsButton> list = Lists.<RealmsButton>newArrayListWithExpectedSize(super.buttonList.size());
 
-        for (GuiButton guibutton : super.buttonList)
+        for (GuiButton GuiButton : super.buttonList)
         {
-            list.add(((GuiButtonRealmsProxy)guibutton).getRealmsButton());
+            list.add(((GuiButtonRealmsProxy)GuiButton).getRealmsButton());
         }
 
         return list;

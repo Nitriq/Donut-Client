@@ -6,6 +6,10 @@ import donut.util.rendering.DrawUtil;
 
 public class Sub extends ModDraggable {
 
+    public Sub(){
+        super("Test");
+    }
+
     @Override
     public int getWidth() {
         return font.getStringWidth("Sub to ThejuKushi!");

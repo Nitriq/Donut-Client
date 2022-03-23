@@ -3,6 +3,7 @@ package donut.mods;
 import donut.gui.hud.IRenderer;
 import donut.gui.hud.ScreenPosition;
 import donut.util.FileManager;
+import net.minecraft.util.ResourceLocation;
 
 import java.io.File;
 
@@ -10,7 +11,7 @@ public abstract class ModDraggable extends Mod implements IRenderer {
 
     protected ScreenPosition pos;
 
-    public ModDraggable(){
+    public ModDraggable(String displayName){
         pos = loadPositionFromFile();
     }
 

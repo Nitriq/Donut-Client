@@ -52,23 +52,23 @@ public class GuiQualitySettingsOF extends GuiScreen
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
-    protected void actionPerformed(GuiButton guibutton)
+    protected void actionPerformed(GuiButton GuiButton)
     {
-        if (guibutton.enabled)
+        if (GuiButton.enabled)
         {
-            if (guibutton.id < 200 && guibutton instanceof GuiOptionButton)
+            if (GuiButton.id < 200 && GuiButton instanceof GuiOptionButton)
             {
-                this.settings.setOptionValue(((GuiOptionButton)guibutton).returnEnumOptions(), 1);
-                guibutton.displayString = this.settings.getKeyBinding(GameSettings.Options.getEnumOptions(guibutton.id));
+                this.settings.setOptionValue(((GuiOptionButton)GuiButton).returnEnumOptions(), 1);
+                GuiButton.displayString = this.settings.getKeyBinding(GameSettings.Options.getEnumOptions(GuiButton.id));
             }
 
-            if (guibutton.id == 200)
+            if (GuiButton.id == 200)
             {
                 this.mc.gameSettings.saveOptions();
                 this.mc.displayGuiScreen(this.prevScreen);
             }
 
-            if (guibutton.id != GameSettings.Options.AA_LEVEL.ordinal())
+            if (GuiButton.id != GameSettings.Options.AA_LEVEL.ordinal())
             {
                 ScaledResolution scaledresolution = new ScaledResolution(this.mc);
                 this.setWorldAndResolution(this.mc, scaledresolution.getScaledWidth(), scaledresolution.getScaledHeight());

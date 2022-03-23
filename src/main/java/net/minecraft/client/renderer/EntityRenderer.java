@@ -580,6 +580,8 @@ public class EntityRenderer implements IResourceManagerReloadListener
     {
         float f = 1.0F;
 
+        float zc = 1.0f;
+
         if (this.mc.getRenderViewEntity() instanceof AbstractClientPlayer)
         {
             AbstractClientPlayer abstractclientplayer = (AbstractClientPlayer)this.mc.getRenderViewEntity();
@@ -602,77 +604,69 @@ public class EntityRenderer implements IResourceManagerReloadListener
 
     /**
      * Changes the field of view of the player depending on if they are underwater or not
-     *  
-     * @param useFOVSetting If true the FOV set in the settings will be use in the calculation
      */
-    private float getFOVModifier(float partialTicks, boolean useFOVSetting)
-    {
-        if (this.debugView)
-        {
+    private float zoomCount = 1.0F;
+
+    private float getFOVModifier(float partialTicks, boolean p_78481_2_) {
+        if (this.debugView) {
             return 90.0F;
-        }
-        else
-        {
+        } else {
             Entity entity = this.mc.getRenderViewEntity();
             float f = 70.0F;
 
-            if (useFOVSetting)
-            {
+            if (p_78481_2_) {
                 f = this.mc.gameSettings.gammaSetting;
 
-                if (Config.isDynamicFov())
-                {
+                if (Config.isDynamicFov()) {
                     f *= this.fovModifierHandPrev + (this.fovModifierHand - this.fovModifierHandPrev) * partialTicks;
                 }
             }
 
             boolean flag = false;
 
-            if (this.mc.currentScreen == null)
-            {
+            if (this.mc.currentScreen == null) {
                 GameSettings gamesettings = this.mc.gameSettings;
                 flag = GameSettings.isKeyDown(this.mc.gameSettings.ofKeyBindZoom);
             }
 
-            if (flag)
-            {
-                if (!Config.zoomMode)
-                {
+            if (flag) {
+                if (!Config.zoomMode) {
                     Config.zoomMode = true;
-                    Config.zoomSmoothCamera = this.mc.gameSettings.debugCamEnable;
                     this.mc.gameSettings.debugCamEnable = true;
+                }
+
+                if (Config.zoomMode) {
+                    if (this.zoomCount < 4.0F) {
+                        this.zoomCount += 0.015F;
+                    }
+                }
+            } else {
+                if (this.zoomCount> 1.0F) {
+                    this.zoomCount -= 0.015F;
+                }
+                if (Config.zoomMode) {
+                    Config.zoomMode = false;
+                    this.mc.gameSettings.debugCamEnable = false;
+                    this.mouseFilterXAxis = new MouseFilter();
+                    this.mouseFilterYAxis = new MouseFilter();
                     this.mc.renderGlobal.displayListEntitiesDirty = true;
                 }
-
-                if (Config.zoomMode)
-                {
-                    f /= getScrollAmount();
-                }
-            }
-            else if (Config.zoomMode)
-            {
-                Config.zoomMode = false;
-                scrollTotal = 4;
-                this.mc.gameSettings.debugCamEnable = Config.zoomSmoothCamera;
-                this.mouseFilterXAxis = new MouseFilter();
-                this.mouseFilterYAxis = new MouseFilter();
-                this.mc.renderGlobal.displayListEntitiesDirty = true;
             }
 
-            if (entity instanceof EntityLivingBase && ((EntityLivingBase)entity).getHealth() <= 0.0F)
-            {
-                float f1 = (float)((EntityLivingBase)entity).deathTime + partialTicks;
+            f /= this.zoomCount;
+
+            if (entity instanceof EntityLivingBase && ((EntityLivingBase) entity).getHealth() <= 0.0F) {
+                float f1 = (float) ((EntityLivingBase) entity).deathTime + partialTicks;
                 f /= (1.0F - 500.0F / (f1 + 500.0F)) * 2.0F + 1.0F;
             }
 
             Block block = ActiveRenderInfo.getBlockAtEntityViewpoint(this.mc.theWorld, entity, partialTicks);
 
-            if (block.getMaterial() == Material.water)
-            {
+            if (block.getMaterial() == Material.water) {
                 f = f * 60.0F / 70.0F;
             }
 
-            return Reflector.ForgeHooksClient_getFOVModifier.exists() ? Reflector.callFloat(Reflector.ForgeHooksClient_getFOVModifier, new Object[] {this, entity, block, Float.valueOf(partialTicks), Float.valueOf(f)}): f;
+            return f;
         }
     }
 
@@ -694,9 +688,12 @@ public class EntityRenderer implements IResourceManagerReloadListener
                 if (scrollTotal < 1) {
                     scrollTotal = 1;
                 }
+
             }
-        return scrollTotal;
+                return scrollTotal;
+
     }
+
 
     private void hurtCameraEffect(float partialTicks)
     {

@@ -9,6 +9,9 @@ import net.minecraft.world.chunk.Chunk;
 
 public class CoordsMod extends ModDraggable {
 
+    public CoordsMod(){
+        super("Coords");
+    }
 
     private final Minecraft mc = Minecraft.getMinecraft();
     private String biome;

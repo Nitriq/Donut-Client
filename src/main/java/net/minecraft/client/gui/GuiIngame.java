@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import donut.event.impl.RenderEvent;
+import donut.gui.BetterChat;
 import donut.gui.hud.HUDConfigScreen;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -57,7 +58,7 @@ public class GuiIngame extends Gui
     private final RenderItem itemRenderer;
 
     /** ChatGUI instance that retains all previous chat data */
-    private final GuiNewChat persistantChatGUI;
+    private final BetterChat persistantChatGUI;
     private final GuiStreamIndicator streamIndicator;
     private int updateCounter;
 
@@ -114,7 +115,7 @@ public class GuiIngame extends Gui
         this.itemRenderer = mcIn.getRenderItem();
         this.overlayDebug = new GuiOverlayDebug(mcIn);
         this.spectatorGui = new GuiSpectator(mcIn);
-        this.persistantChatGUI = new GuiNewChat(mcIn);
+        this.persistantChatGUI = new BetterChat(mcIn);
         this.streamIndicator = new GuiStreamIndicator(mcIn);
         this.overlayPlayerList = new GuiPlayerTabOverlay(mcIn, this);
         this.setDefaultTitlesTimes();
@@ -1198,7 +1199,7 @@ public class GuiIngame extends Gui
     /**
      * returns a pointer to the persistant Chat GUI, containing all previous chat messages and such
      */
-    public GuiNewChat getChatGUI()
+    public BetterChat getChatGUI()
     {
         return this.persistantChatGUI;
     }

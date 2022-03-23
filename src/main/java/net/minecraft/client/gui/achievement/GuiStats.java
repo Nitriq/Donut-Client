@@ -88,26 +88,26 @@ public class GuiStats extends GuiScreen implements IProgressMeter
     {
         this.buttonList.add(new GuiButton(0, this.width / 2 + 4, this.height - 28, 150, 20, I18n.format("gui.done", new Object[0])));
         this.buttonList.add(new GuiButton(1, this.width / 2 - 160, this.height - 52, 80, 20, I18n.format("stat.generalButton", new Object[0])));
-        GuiButton guibutton;
-        this.buttonList.add(guibutton = new GuiButton(2, this.width / 2 - 80, this.height - 52, 80, 20, I18n.format("stat.blocksButton", new Object[0])));
-        GuiButton guibutton1;
-        this.buttonList.add(guibutton1 = new GuiButton(3, this.width / 2, this.height - 52, 80, 20, I18n.format("stat.itemsButton", new Object[0])));
-        GuiButton guibutton2;
-        this.buttonList.add(guibutton2 = new GuiButton(4, this.width / 2 + 80, this.height - 52, 80, 20, I18n.format("stat.mobsButton", new Object[0])));
+        GuiButton GuiButton;
+        this.buttonList.add(GuiButton = new GuiButton(2, this.width / 2 - 80, this.height - 52, 80, 20, I18n.format("stat.blocksButton", new Object[0])));
+        GuiButton GuiButton1;
+        this.buttonList.add(GuiButton1 = new GuiButton(3, this.width / 2, this.height - 52, 80, 20, I18n.format("stat.itemsButton", new Object[0])));
+        GuiButton GuiButton2;
+        this.buttonList.add(GuiButton2 = new GuiButton(4, this.width / 2 + 80, this.height - 52, 80, 20, I18n.format("stat.mobsButton", new Object[0])));
 
         if (this.blockStats.getSize() == 0)
         {
-            guibutton.enabled = false;
+            GuiButton.enabled = false;
         }
 
         if (this.itemStats.getSize() == 0)
         {
-            guibutton1.enabled = false;
+            GuiButton1.enabled = false;
         }
 
         if (this.mobStats.getSize() == 0)
         {
-            guibutton2.enabled = false;
+            GuiButton2.enabled = false;
         }
     }
 

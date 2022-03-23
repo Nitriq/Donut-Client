@@ -46,9 +46,9 @@ public class GuiGameOver extends GuiScreen implements GuiYesNoCallback
             }
         }
 
-        for (GuiButton guibutton : this.buttonList)
+        for (GuiButton GuiButton : this.buttonList)
         {
-            guibutton.enabled = false;
+            GuiButton.enabled = false;
         }
     }
 
@@ -141,9 +141,9 @@ public class GuiGameOver extends GuiScreen implements GuiYesNoCallback
 
         if (this.enableButtonsTimer == 20)
         {
-            for (GuiButton guibutton : this.buttonList)
+            for (GuiButton GuiButton : this.buttonList)
             {
-                guibutton.enabled = true;
+                GuiButton.enabled = true;
             }
         }
     }

@@ -7,6 +7,10 @@ import net.minecraft.client.Minecraft;
 
 public class PingMod extends ModDraggable {
 
+    public PingMod(){
+        super("Ping");
+    }
+
     @Override
     public int getWidth() {
         return font.getStringWidth("Ping: 999ms");

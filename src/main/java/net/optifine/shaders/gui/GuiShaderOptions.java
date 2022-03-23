@@ -90,19 +90,19 @@ public class GuiShaderOptions extends GuiScreenOF
                     int j3 = k + k2 * l;
                     int k3 = l2 - 10;
                     String s = getButtonText(shaderoption, k3);
-                    GuiButtonShaderOption guibuttonshaderoption;
+                    GuiButtonShaderOption GuiButtonshaderoption;
 
                     if (Shaders.isShaderPackOptionSlider(shaderoption.getName()))
                     {
-                        guibuttonshaderoption = new GuiSliderShaderOption(i + i2, i3, j3, k3, j1, shaderoption, s);
+                        GuiButtonshaderoption = new GuiSliderShaderOption(i + i2, i3, j3, k3, j1, shaderoption, s);
                     }
                     else
                     {
-                        guibuttonshaderoption = new GuiButtonShaderOption(i + i2, i3, j3, k3, j1, shaderoption, s);
+                        GuiButtonshaderoption = new GuiButtonShaderOption(i + i2, i3, j3, k3, j1, shaderoption, s);
                     }
 
-                    guibuttonshaderoption.enabled = shaderoption.isEnabled();
-                    this.buttonList.add(guibuttonshaderoption);
+                    GuiButtonshaderoption.enabled = shaderoption.isEnabled();
+                    this.buttonList.add(GuiButtonshaderoption);
                 }
             }
         }
@@ -138,14 +138,14 @@ public class GuiShaderOptions extends GuiScreenOF
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
-    protected void actionPerformed(GuiButton guibutton)
+    protected void actionPerformed(GuiButton GuiButton)
     {
-        if (guibutton.enabled)
+        if (GuiButton.enabled)
         {
-            if (guibutton.id < 200 && guibutton instanceof GuiButtonShaderOption)
+            if (GuiButton.id < 200 && GuiButton instanceof GuiButtonShaderOption)
             {
-                GuiButtonShaderOption guibuttonshaderoption = (GuiButtonShaderOption)guibutton;
-                ShaderOption shaderoption = guibuttonshaderoption.getShaderOption();
+                GuiButtonShaderOption GuiButtonshaderoption = (GuiButtonShaderOption)GuiButton;
+                ShaderOption shaderoption = GuiButtonshaderoption.getShaderOption();
 
                 if (shaderoption instanceof ShaderOptionScreen)
                 {
@@ -159,7 +159,7 @@ public class GuiShaderOptions extends GuiScreenOF
                 {
                     shaderoption.resetValue();
                 }
-                else if (guibuttonshaderoption.isSwitchable())
+                else if (GuiButtonshaderoption.isSwitchable())
                 {
                     shaderoption.nextValue();
                 }
@@ -168,7 +168,7 @@ public class GuiShaderOptions extends GuiScreenOF
                 this.changed = true;
             }
 
-            if (guibutton.id == 201)
+            if (GuiButton.id == 201)
             {
                 ShaderOption[] ashaderoption = Shaders.getChangedOptions(Shaders.getShaderPackOptions());
 
@@ -182,7 +182,7 @@ public class GuiShaderOptions extends GuiScreenOF
                 this.updateAllButtons();
             }
 
-            if (guibutton.id == 200)
+            if (GuiButton.id == 200)
             {
                 if (this.changed)
                 {
@@ -200,14 +200,14 @@ public class GuiShaderOptions extends GuiScreenOF
     {
         if (btn instanceof GuiButtonShaderOption)
         {
-            GuiButtonShaderOption guibuttonshaderoption = (GuiButtonShaderOption)btn;
-            ShaderOption shaderoption = guibuttonshaderoption.getShaderOption();
+            GuiButtonShaderOption GuiButtonshaderoption = (GuiButtonShaderOption)btn;
+            ShaderOption shaderoption = GuiButtonshaderoption.getShaderOption();
 
             if (isShiftKeyDown())
             {
                 shaderoption.resetValue();
             }
-            else if (guibuttonshaderoption.isSwitchable())
+            else if (GuiButtonshaderoption.isSwitchable())
             {
                 shaderoption.prevValue();
             }
@@ -234,12 +234,12 @@ public class GuiShaderOptions extends GuiScreenOF
 
     private void updateAllButtons()
     {
-        for (GuiButton guibutton : this.buttonList)
+        for (GuiButton GuiButton : this.buttonList)
         {
-            if (guibutton instanceof GuiButtonShaderOption)
+            if (GuiButton instanceof GuiButtonShaderOption)
             {
-                GuiButtonShaderOption guibuttonshaderoption = (GuiButtonShaderOption)guibutton;
-                ShaderOption shaderoption = guibuttonshaderoption.getShaderOption();
+                GuiButtonShaderOption GuiButtonshaderoption = (GuiButtonShaderOption)GuiButton;
+                ShaderOption shaderoption = GuiButtonshaderoption.getShaderOption();
 
                 if (shaderoption instanceof ShaderOptionProfile)
                 {
@@ -247,8 +247,8 @@ public class GuiShaderOptions extends GuiScreenOF
                     shaderoptionprofile.updateProfile();
                 }
 
-                guibuttonshaderoption.displayString = getButtonText(shaderoption, guibuttonshaderoption.getButtonWidth());
-                guibuttonshaderoption.valueChanged();
+                GuiButtonshaderoption.displayString = getButtonText(shaderoption, GuiButtonshaderoption.getButtonWidth());
+                GuiButtonshaderoption.valueChanged();
             }
         }
     }

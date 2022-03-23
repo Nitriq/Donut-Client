@@ -183,4 +183,8 @@ public class Animation {
     private static float map(float value, float minInput, float maxInput, float minMapped, float maxMapped) {
         return (value - minInput) / (maxInput - minInput) * (maxMapped - minMapped) + minMapped;
     }
+
+    public static float clamp(float number, float min, float max) {
+        return number < min ? min : Math.min(number, max);
+    }
 }

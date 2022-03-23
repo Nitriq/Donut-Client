@@ -746,16 +746,16 @@ public class GuiCustomizeWorldScreen extends GuiScreen implements GuiSlider.Form
 
                         if (gui instanceof GuiButton)
                         {
-                            GuiButton guibutton = (GuiButton)gui;
+                            GuiButton GuiButton = (GuiButton)gui;
 
-                            if (guibutton instanceof GuiSlider)
+                            if (GuiButton instanceof GuiSlider)
                             {
-                                float f = ((GuiSlider)guibutton).func_175217_d() * (0.75F + this.random.nextFloat() * 0.5F) + (this.random.nextFloat() * 0.1F - 0.05F);
-                                ((GuiSlider)guibutton).func_175219_a(MathHelper.clamp_float(f, 0.0F, 1.0F));
+                                float f = ((GuiSlider)GuiButton).func_175217_d() * (0.75F + this.random.nextFloat() * 0.5F) + (this.random.nextFloat() * 0.1F - 0.05F);
+                                ((GuiSlider)GuiButton).func_175219_a(MathHelper.clamp_float(f, 0.0F, 1.0F));
                             }
-                            else if (guibutton instanceof GuiListButton)
+                            else if (GuiButton instanceof GuiListButton)
                             {
-                                ((GuiListButton)guibutton).func_175212_b(this.random.nextBoolean());
+                                ((GuiListButton)GuiButton).func_175212_b(this.random.nextBoolean());
                             }
                         }
 
@@ -763,16 +763,16 @@ public class GuiCustomizeWorldScreen extends GuiScreen implements GuiSlider.Form
 
                         if (gui1 instanceof GuiButton)
                         {
-                            GuiButton guibutton1 = (GuiButton)gui1;
+                            GuiButton GuiButton1 = (GuiButton)gui1;
 
-                            if (guibutton1 instanceof GuiSlider)
+                            if (GuiButton1 instanceof GuiSlider)
                             {
-                                float f1 = ((GuiSlider)guibutton1).func_175217_d() * (0.75F + this.random.nextFloat() * 0.5F) + (this.random.nextFloat() * 0.1F - 0.05F);
-                                ((GuiSlider)guibutton1).func_175219_a(MathHelper.clamp_float(f1, 0.0F, 1.0F));
+                                float f1 = ((GuiSlider)GuiButton1).func_175217_d() * (0.75F + this.random.nextFloat() * 0.5F) + (this.random.nextFloat() * 0.1F - 0.05F);
+                                ((GuiSlider)GuiButton1).func_175219_a(MathHelper.clamp_float(f1, 0.0F, 1.0F));
                             }
-                            else if (guibutton1 instanceof GuiListButton)
+                            else if (GuiButton1 instanceof GuiListButton)
                             {
-                                ((GuiListButton)guibutton1).func_175212_b(this.random.nextBoolean());
+                                ((GuiListButton)GuiButton1).func_175212_b(this.random.nextBoolean());
                             }
                         }
                     }

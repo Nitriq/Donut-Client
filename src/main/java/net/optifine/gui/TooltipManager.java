@@ -31,12 +31,12 @@ public class TooltipManager
 
             if (System.currentTimeMillis() >= this.mouseStillTime + (long)i)
             {
-                GuiButton guibutton = GuiScreenOF.getSelectedButton(x, y, buttonList);
+                GuiButton GuiButton = GuiScreenOF.getSelectedButton(x, y, buttonList);
 
-                if (guibutton != null)
+                if (GuiButton != null)
                 {
                     Rectangle rectangle = this.tooltipProvider.getTooltipBounds(this.guiScreen, x, y);
-                    String[] astring = this.tooltipProvider.getTooltipLines(guibutton, rectangle.width);
+                    String[] astring = this.tooltipProvider.getTooltipLines(GuiButton, rectangle.width);
 
                     if (astring != null)
                     {

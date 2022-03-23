@@ -18,9 +18,9 @@ public class GuiOptionsRowList extends GuiListExtended
         {
             GameSettings.Options gamesettings$options = p_i45015_7_[i];
             GameSettings.Options gamesettings$options1 = i < p_i45015_7_.length - 1 ? p_i45015_7_[i + 1] : null;
-            GuiButton guibutton = this.func_148182_a(mcIn, p_i45015_2_ / 2 - 155, 0, gamesettings$options);
-            GuiButton guibutton1 = this.func_148182_a(mcIn, p_i45015_2_ / 2 - 155 + 160, 0, gamesettings$options1);
-            this.field_148184_k.add(new GuiOptionsRowList.Row(guibutton, guibutton1));
+            GuiButton GuiButton = this.func_148182_a(mcIn, p_i45015_2_ / 2 - 155, 0, gamesettings$options);
+            GuiButton GuiButton1 = this.func_148182_a(mcIn, p_i45015_2_ / 2 - 155 + 160, 0, gamesettings$options1);
+            this.field_148184_k.add(new GuiOptionsRowList.Row(GuiButton, GuiButton1));
         }
     }
 

@@ -21,12 +21,12 @@ public class GuiScreenOF extends GuiScreen
 
         if (mouseButton == 1)
         {
-            GuiButton guibutton = getSelectedButton(mouseX, mouseY, this.buttonList);
+            GuiButton GuiButton = getSelectedButton(mouseX, mouseY, this.buttonList);
 
-            if (guibutton != null && guibutton.enabled)
+            if (GuiButton != null && GuiButton.enabled)
             {
-                guibutton.playPressSound(this.mc.getSoundHandler());
-                this.actionPerformedRightClick(guibutton);
+                GuiButton.playPressSound(this.mc.getSoundHandler());
+                this.actionPerformedRightClick(GuiButton);
             }
         }
     }
@@ -35,16 +35,16 @@ public class GuiScreenOF extends GuiScreen
     {
         for (int i = 0; i < listButtons.size(); ++i)
         {
-            GuiButton guibutton = (GuiButton)listButtons.get(i);
+            GuiButton GuiButton = (GuiButton)listButtons.get(i);
 
-            if (guibutton.visible)
+            if (GuiButton.visible)
             {
-                int j = GuiVideoSettings.getButtonWidth(guibutton);
-                int k = GuiVideoSettings.getButtonHeight(guibutton);
+                int j = GuiVideoSettings.getButtonWidth(GuiButton);
+                int k = GuiVideoSettings.getButtonHeight(GuiButton);
 
-                if (x >= guibutton.xPosition && y >= guibutton.yPosition && x < guibutton.xPosition + j && y < guibutton.yPosition + k)
+                if (x >= GuiButton.xPosition && y >= GuiButton.yPosition && x < GuiButton.xPosition + j && y < GuiButton.yPosition + k)
                 {
-                    return guibutton;
+                    return GuiButton;
                 }
             }
         }
